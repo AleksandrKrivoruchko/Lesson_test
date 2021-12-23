@@ -4,6 +4,13 @@
 }
 
 Console.Write("Введите число  ");
-double x = double.Parse(Console.ReadLine());
-double square_x = my_square(x);
-Console.Write("Квадрат числа " + x + " = " + square_x);
+try
+{
+    double x = double.Parse(Console.ReadLine());
+    double square_x = my_square(x);
+    Console.Write("Квадрат числа " + x + " = " + square_x);
+}
+catch(FormatException)
+{
+    Console.WriteLine("Неправильный ввод!");
+}
