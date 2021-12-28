@@ -1,4 +1,4 @@
-﻿// Программа проверяет пятизначное число на палиндромом.
+﻿// Программа проверяет пятизначное число на палиндром.
 int my_read_int(string msg, out int len) //возвращает целое число с консоли
 {
     Console.Write(msg);
@@ -26,8 +26,6 @@ bool IsPolidrom(int value, int len)
     int temp = len / 2 + 1;
     if (len < 2)
         return false;
-    //else if (len == 2 || len == 3)
-    // temp = 2;
     for (int i = 1; i < temp; i++)
     {
         if (divide_number(value, i) == divide_number(value, len + 1 - i))
@@ -55,8 +53,8 @@ while (Console.ReadLine() != "q")
 
     Console.WriteLine(len);
     if (IsPolidrom(valueX, len))
-        Console.WriteLine($"Это число {valueX} палиндромом");
+        Console.WriteLine($"Это число {valueX} палиндром");
     else
-        Console.WriteLine($"Это число {valueX} не палиндромом");
+        Console.WriteLine($"Это число {valueX} не палиндром");
     Console.WriteLine("Для выхода из программы введите q");
 }
