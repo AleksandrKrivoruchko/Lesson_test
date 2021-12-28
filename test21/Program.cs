@@ -23,16 +23,17 @@ int divide_number(int value, int position) //возвращает цифру в 
 
 bool IsPolidrom(int value, int len)
 {
-    int temp = len / 2;
+    int temp = len / 2 + 1;
     if (len < 2)
         return false;
-    else if (len == 2)
-        temp = len;
+    //else if (len == 2 || len == 3)
+    // temp = 2;
     for (int i = 1; i < temp; i++)
     {
         if (divide_number(value, i) == divide_number(value, len + 1 - i))
         {
             Console.WriteLine(divide_number(value, i));
+            Console.WriteLine(divide_number(value, len + 1 - i));
             continue;
         }
         return false;
@@ -45,7 +46,7 @@ Console.Clear();
 while (Console.ReadLine() != "q")
 {
     int len = 0;
-    int valueX = my_read_int("Введите номер четверти: ", out len);
+    int valueX = my_read_int("Введите число для проверки: ", out len);
     if (valueX == -1)
     {
         Console.WriteLine("Ошибка ввода");
