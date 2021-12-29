@@ -39,6 +39,19 @@ bool IsPolidrom(int value, int len)
     return true;
 }
 
+int quantity_digit(int value)
+{
+    int temp = value;
+    int quantity = 0;
+    while (temp > 0)
+    {
+        temp = temp / 10;
+        quantity++;
+    }
+    Console.WriteLine($"{quantity} цифр в {value}");
+    return quantity;
+}
+
 Console.Clear();
 //Отладочный цикл
 while (Console.ReadLine() != "q")
@@ -52,7 +65,8 @@ while (Console.ReadLine() != "q")
     }
 
     Console.WriteLine(len);
-    if (IsPolidrom(valueX, len))
+    int number_len = quantity_digit(valueX);
+    if (IsPolidrom(valueX, number_len))
         Console.WriteLine($"Это число {valueX} палиндром");
     else
         Console.WriteLine($"Это число {valueX} не палиндром");
