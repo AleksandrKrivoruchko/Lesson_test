@@ -34,3 +34,9 @@ double distance_dot(int[] dot1, int[] dot2)
 int[] dot1 = { 1, 2, 8 };
 int[] dot2 = { 5, 5, 0 };
 Console.WriteLine(distance_dot(dot1, dot2));
+int[] dot3 = { 1, 1, 1 };
+int[] dot4 = { 3, 4, 7 };
+Console.WriteLine(distance_dot(dot3, dot4));
+int[] dot5 = { 5, 7 };
+int[] dot6 = { 1, 4 };
+Console.WriteLine(distance_dot(dot5, dot6));
