@@ -1,11 +1,11 @@
 ﻿// Определить количество цифр в числе
 
-int myInput(string msg)
+long myInput(string msg)
 {
     Console.Write(msg);
     string number = Console.ReadLine() ?? String.Empty;
-    bool flag = int.TryParse(number, out int value);
-    if (flag && value >= 0)
+    bool flag = long.TryParse(number, out long value);
+    if (flag)
         return value;
     else
     {
@@ -14,9 +14,9 @@ int myInput(string msg)
     }
 }
 
-int numberOfDigits(int value)
+int numberOfDigits(long value)
 {
-    int temp = value;
+    long temp = value;
     int result = 0;
     if (temp < 10)
         return 1;
@@ -37,10 +37,17 @@ bool testExit()
     return true;
 }
 
+long modNumber(long value)
+{
+    if (value < 0)
+        return -value;
+    return value;
+}
+
 while (testExit())
 {
-    int value = myInput("Введите число: ");
+    long value = myInput("Введите число: ");
     if (value == -1)
         continue;
-    Console.WriteLine($"Число {value} содержит {numberOfDigits(value)} цифр");
+    Console.WriteLine($"Число {value} содержит {numberOfDigits(modNumber(value))} цифр");
 }
