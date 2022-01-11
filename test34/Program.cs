@@ -1,23 +1,28 @@
-// Задать массив из 8 элементов и вывести их на экран 
-
+﻿// Написать программу замену элементов массива на противоположные
 void FillRandArray(int[] array, int start, int end)
 {
     Random randValue = new Random();
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = randValue.Next(start, end);
+        array[i] = randValue.Next(start, end + 1);
     }
 }
 
 void PrintArray(int[] array)
 {
-    int k = 1;
     for (int i = 0; i < array.Length; i++)
     {
-        Console.Write($"{array[i],7}");
-        if (k % 7 == 0)
+        Console.Write($"{array[i]}\t");
+        if (i % 7 == 0)
             Console.WriteLine();
-        k++;
+    }
+}
+
+void ChangeElements(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = -array[i];
     }
 }
 
@@ -33,7 +38,11 @@ bool IsExit()
 int[] array = new int[20];
 while (IsExit())
 {
-    FillRandArray(array, -10, 10);
+    FillRandArray(array, -9, 9);
+    PrintArray(array);
+    Console.WriteLine();
+    Console.WriteLine();
+    ChangeElements(array);
     PrintArray(array);
     Console.WriteLine();
 }
