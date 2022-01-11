@@ -1,4 +1,4 @@
-﻿// Задать массив из 8 элементов, заполненных нулями и единицами вывести их на экран
+﻿// В одномерном массиве из 123 чисел найти количество элементов из отрезка [10,99]
 void FillRandArray(int[] array, int start, int end)
 {
     Random randValue = new Random();
@@ -18,6 +18,7 @@ void PrintArray(int[] array)
             Console.WriteLine();
         k++;
     }
+    Console.WriteLine();
 }
 
 bool IsExit()
@@ -29,10 +30,23 @@ bool IsExit()
     return true;
 }
 
-int[] array = new int[20];
+int IsTheRange(int[] array)
+{
+    int result = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > 9 && array[i] < 100)
+            result++;
+    }
+    return result;
+}
+
+int[] array = new int[123];
 while (IsExit())
 {
-    FillRandArray(array, 0, 1);
+    FillRandArray(array, 0, 200);
     PrintArray(array);
     Console.WriteLine();
+    int result = IsTheRange(array);
+    Console.WriteLine($"Количество чисел из диапазона [10, 99] - {result}");
 }
