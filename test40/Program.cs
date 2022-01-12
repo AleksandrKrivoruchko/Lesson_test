@@ -1,4 +1,5 @@
-﻿// В Указанном массиве вещественных чисел найдите разницу
+﻿using static System.Console;
+// В Указанном массиве вещественных чисел найдите разницу
 // между максимальным и минимальным элементом
 void FillArrayDouble(double[] darray, int range)
 {
@@ -19,12 +20,12 @@ void PrintArray(double[] darray)
     int k = 1;
     for (int i = 0; i < darray.Length; i++)
     {
-        Console.Write($"{darray[i],7:N2}\t");
+        Write($"{darray[i],7:N2}\t");
         if (k % 7 == 0)
-            Console.WriteLine();
+            WriteLine();
         k++;
     }
-    Console.WriteLine();
+    WriteLine();
 }
 
 void Difference(double[] darray, int[] min_max)
@@ -43,4 +44,4 @@ int[] min_max = { 0, 0 };
 FillArrayDouble(darray, 100);
 PrintArray(darray);
 Difference(darray, min_max);
-Console.WriteLine($"{darray[min_max[1]]:N2} - {darray[min_max[0]]:N2} = {darray[min_max[1]] - darray[min_max[0]]:N2}");
+WriteLine($"{darray[min_max[1]]:N2} - {darray[min_max[0]]:N2} = {darray[min_max[1]] - darray[min_max[0]]:N2}");
