@@ -1,4 +1,4 @@
-﻿// Задать массив из 8 элементов и вывести их на экран 
+// Задать массив из 8 элементов и вывести их на экран 
 
 void FillRandArray(int[] array, int start, int end)
 {
@@ -11,11 +11,13 @@ void FillRandArray(int[] array, int start, int end)
 
 void PrintArray(int[] array)
 {
+    int k = 1;
     for (int i = 0; i < array.Length; i++)
     {
-        Console.Write($"{array[i]}\t");
-        if (i % 7 == 0 && i != 0)
+        Console.Write($"{array[i],7}");
+        if (k % 7 == 0)
             Console.WriteLine();
+        k++;
     }
 }
 
