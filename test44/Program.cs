@@ -10,11 +10,20 @@ string MyInput()
 bool ConvertStr(string str, out double side)
 {
     bool answer = double.TryParse(str, out side);
+    WriteLine($"ConvertStr {side}, {answer}");
+    WriteLine($"ConvertStr {str}");
     return answer;
+}
+
+void PrintArray(string[] array)
+{
+    foreach (string str in array)
+        WriteLine($"PrintArray {str}");
 }
 
 void SplitStr(string str, string[] sidesString)
 {
+    WriteLine($"SplitStr {str}");
     int j = 0;
     bool flag = true;
     for (int i = 0; i < str.Length; i++)
@@ -31,6 +40,7 @@ void SplitStr(string str, string[] sidesString)
         flag = true;
         sidesString[j] += str[i];
     }
+    PrintArray(sidesString);
 
 }
 
@@ -44,6 +54,12 @@ bool IsInputCorrect(string[] sidesString, double[] sides)
     return true;
 }
 
+void ClearArray(string[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+        array[i] = string.Empty;
+}
+
 bool IsCrossing(double[] coefficiens, double[] result)
 {
     if (coefficiens[0] == coefficiens[2])
@@ -55,6 +71,7 @@ bool IsCrossing(double[] coefficiens, double[] result)
     return true;
 }
 
+Clear();
 double[] cor = new double[2];
 double[] coeff = new double[4];
 string[] splitCoeff = new string[4];
@@ -67,10 +84,14 @@ while (true)
         break;
     SplitStr(str, splitCoeff);
     flag = IsInputCorrect(splitCoeff, coeff);
+    ClearArray(splitCoeff);
     if (!flag)
     {
         WriteLine("Неверный ввод");
         continue;
     }
-    IsCrossing(coeff, cor);
+    if (IsCrossing(coeff, cor))
+        WriteLine($"Координаты точки пересечения ({cor[0]:N3}, {cor[1]:N3})");
+    else
+        WriteLine("Точки пересечения нет");
 }
