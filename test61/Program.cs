@@ -58,9 +58,36 @@ int CalculationMatrixElement(int[] matrixRow, int[] matrixColumn)
     return element;
 }
 
-int[,] matrixA = CreateTwoDimensionArray(2, 3, 0, 3);
+int[,] TestMatrix(bool cursor)
+{
+    int[,] test = new int[2, 4];
+    Random rnd = new Random();
+    for (int i = 0; i < test.GetLength(1); i++)
+        test[0, i] = rnd.Next(2, 5);
+    if (cursor)
+        test[0, 1] = test[0, 2];
+    for (int i = 0; i < test.GetLength(1); i++)
+        test[1, i] = rnd.Next(-10, 10);
+    if (test[1, 0] > test[1, 1])
+    {
+        int tmp = test[1, 0];
+        test[1, 0] = test[1, 1];
+        test[1, 1] = tmp;
+    }
+    if (test[1, 2] > test[1, 3])
+    {
+        int tmp = test[1, 2];
+        test[1, 2] = test[1, 3];
+        test[1, 3] = tmp;
+    }
+    return test;
+}
+
+int[,] test = TestMatrix(false);
+
+int[,] matrixA = CreateTwoDimensionArray(test[0, 0], test[0, 1], test[1, 0], test[1, 1]);
 PrintTwoDimensionArray(matrixA);
-int[,] matrixB = CreateTwoDimensionArray(3, 2, -2, 5);
+int[,] matrixB = CreateTwoDimensionArray(test[0, 2], test[0, 3], test[1, 2], test[1, 3]);
 PrintTwoDimensionArray(matrixB);
 if (matrixA.GetLength(1) == matrixB.GetLength(0))
 {
