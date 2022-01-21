@@ -27,8 +27,8 @@ void PrintThreeDimensionArray(int[,,] array)
             }
             WriteLine();
         }
-        //WriteLine();
-        //WriteLine();
+        // WriteLine();
+        // WriteLine();
     }
 }
 
