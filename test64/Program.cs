@@ -2,52 +2,32 @@
 using static System.Console;
 int[,] TrigonPascal(int n)
 {
-    int len = 2 * n + 3;
+    int len = n + 1;
     int[,] trigonPascal = new int[n, len];
-    int middle = len / 2;
-    for (int i = 0; i < n; i++)
+    trigonPascal[0, len - 2] = 1;
+    for (int i = 1; i < n; i++)
     {
-        for (int j = 0; j < len; j++)
+        for (int j = 0; j < len - 1; j++)
         {
-            if (j == middle && i == 0)
-                trigonPascal[i, j] = 1;
-            if (i == 1)
-            {
-                if (j == middle - 1)
-                    trigonPascal[i, j] = 1;
-                if (j == middle + 1)
-                    trigonPascal[i, j] = 1;
-            }
-            else
-            {
-                if (i > 1)
-                    if (j + 2 < len)
-                        trigonPascal[i, j + 1] = trigonPascal[i - 1, j + 2] + trigonPascal[i - 1, j];
-            }
-            // Write($"{trigonPascal[i, j]}");
+            trigonPascal[i, j] = trigonPascal[i - 1, j] + trigonPascal[i - 1, j + 1];
         }
-        // WriteLine();
     }
     return trigonPascal;
 }
 
 void PrintTwoDimensionArray(int[,] array)
 {
-    string tempStr = string.Empty;
     for (int i = 0; i < array.GetLength(0); i++)
     {
+        //SetCursorPosition(5, 5);
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            if (array[i, j] == 0)
-                tempStr += " ";
-            else
-                tempStr += array[i, j];
+            Write($"{array[i, j]} ");
         }
-        tempStr += "\n";
+        WriteLine();
     }
-    WriteLine(tempStr);
     WriteLine();
 }
-
+//SetCursorPosition(20, 10);
 int[,] trigon = TrigonPascal(10);
 PrintTwoDimensionArray(trigon);
