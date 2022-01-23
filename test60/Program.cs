@@ -105,7 +105,7 @@ bool IsElement(int[,] array, int element)
 }
 
 
-int[,] testArray = CreateTwoDimensionArray(4, 14, 0, 8);
+int[,] testArray = CreateTwoDimensionArray(10, 8, 0, 9);
 PrintTwoDimensionArray(testArray);
 int[,] resultArray = RepetitionElementsInArray(testArray);
 for (int i = 0; i < resultArray.GetLength(0); i++)
