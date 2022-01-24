@@ -8,7 +8,7 @@ int SumRange(int startRange, int endRange)
         return startRange;
 }
 
-int[] ConvertInput(string inputString)
+int[] ConverInputStringToInt(string inputString)
 {
     string[] temp = inputString.Split(" ", StringSplitOptions.RemoveEmptyEntries);
     if (temp.Length != 2) ErrorMessage(inputString);
@@ -29,7 +29,7 @@ void ErrorMessage(string msg)
 
 WriteLine("Введите число M и число N через пробел");
 string answerRange = ReadLine() ?? string.Empty;
-int[] rangeLimits = ConvertInput(answerRange);
+int[] rangeLimits = ConverInputStringToInt(answerRange);
 int sumDiapason = 0;
 if (rangeLimits[0] < rangeLimits[1])
 {

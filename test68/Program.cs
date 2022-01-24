@@ -20,7 +20,7 @@ int ReverseOutputNumbers(int startValue, int endRange)
     return startValue;
 }
 
-int[] ConvertInput(string inputString)
+int[] ConvertInputStringToInt(string inputString)
 {
     string[] temp = inputString.Split(" ", StringSplitOptions.RemoveEmptyEntries);
     if (temp.Length != 2) ErrorMessage(inputString);
@@ -41,7 +41,7 @@ void ErrorMessage(string msg)
 
 WriteLine("Введите число M и число N через пробел");
 string answerRange = ReadLine() ?? string.Empty;
-int[] rangeLimits = ConvertInput(answerRange);
+int[] rangeLimits = ConvertInputStringToInt(answerRange);
 if (rangeLimits[0] < rangeLimits[1])
 {
     DirectOutputNumbers(rangeLimits[0], rangeLimits[1]);
