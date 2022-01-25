@@ -9,5 +9,5 @@ int NumericalSeries(int value, int range)
     return value;
 }
 
-NumericalSeries(1, 87215);
+NumericalSeries(1, 1000);
 Console.WriteLine();

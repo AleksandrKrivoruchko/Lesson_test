@@ -1,5 +1,8 @@
 ﻿// Показать треугольник Паскаля
 using static System.Console;
+
+// Формирование массива с числами треугольника Паскаля.
+// n - количество строк в треугольнике.
 int[,] TrigonPascal(int n)
 {
     int len = n + 1;
@@ -15,19 +18,38 @@ int[,] TrigonPascal(int n)
     return trigonPascal;
 }
 
-void PrintTwoDimensionArray(int[,] array)
+// Получение массива строк из массива чисел.
+string[] ConvertIntArrayToString(int[,] inputArray)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
+    string[] resultArray = new string[inputArray.GetLength(0)];
+    for (int i = 0; i < inputArray.GetLength(0); i++)
     {
-        //SetCursorPosition(5, 5);
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = 0; j < inputArray.GetLength(1); j++)
         {
-            Write($"{array[i, j]} ");
+            if (inputArray[i, j] == 0) continue;
+            resultArray[i] += inputArray[i, j] + "     ";
         }
-        WriteLine();
     }
-    WriteLine();
+    return resultArray;
 }
-//SetCursorPosition(20, 10);
+
+// Вывод на экран треугольника Паскаля.
+void PrintTriangleFromStringArray(string[] triangleString)
+{
+    int lastIndexArray = triangleString.Length - 1;
+    int middleString = triangleString[lastIndexArray].Length / 2;
+    for (int i = 0; i < triangleString.Length; i++)
+    {
+        int numberOfSpaces = middleString - triangleString[i].Length / 2;
+        while (numberOfSpaces > 0)
+        {
+            Write(" ");
+            numberOfSpaces--;
+        }
+        WriteLine(triangleString[i]);
+    }
+}
+
 int[,] trigon = TrigonPascal(10);
-PrintTwoDimensionArray(trigon);
+string[] trigonString = ConvertIntArrayToString(trigon);
+PrintTriangleFromStringArray(trigonString);
