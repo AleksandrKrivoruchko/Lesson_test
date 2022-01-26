@@ -1,9 +1,10 @@
 ﻿// Написать программу возведения числа А в целую стень B
-double RecursionPowerInt(double number, int power)
+double RecursionPositivePowerInt(double number, int power)
 {
     if (power == 0) return 1;
-    return number * RecursionPowerInt(number, power - 1);
+    return number * RecursionPositivePowerInt(number, power - 1);
 }
+
 
 Console.Write("Введите число: ");
 double number = 0;
@@ -13,5 +14,7 @@ Console.Write("Введите степень: ");
 int power = 0;
 inputNumber = Console.ReadLine() ?? string.Empty;
 isNumber = int.TryParse(inputNumber, out power);
-
-Console.WriteLine(RecursionPowerInt(number, power));
+if (power > 0)
+    Console.WriteLine($"{RecursionPositivePowerInt(number, power)}");
+else
+    Console.WriteLine($"{1 / RecursionPositivePowerInt(number, -power)}");
