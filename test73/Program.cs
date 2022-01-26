@@ -4,11 +4,8 @@
 using static System.Console;
 string CreatSeries(double start, double next, int amountNumbers)
 {
-    string res = start.ToString();
     if (amountNumbers == 0) return string.Empty;
-    res = res + " " + $"{CreatSeries(next, start + next, amountNumbers - 1)}";
-    return res;
-
+    return $"{start} " + CreatSeries(next, start + next, amountNumbers - 1);
 }
 
 double[] ConverInputString(string inputString)
