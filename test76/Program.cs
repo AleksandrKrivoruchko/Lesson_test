@@ -7,7 +7,7 @@ int NumberOfGroups(decimal range)
     int count = 0;
     decimal temp = range;
     Console.WriteLine(temp);
-    while (temp / 2 > 1)
+    while (temp > 1)
     {
         if (temp > 4294967296)
         {
@@ -39,11 +39,14 @@ int NumberOfGroups(decimal range)
             temp = temp / 32;
             count += 5;
         }
-        temp = temp / 2;
-        count++;
+        if (temp > 1)
+        {
+            temp = temp / 2;
+            count++;
+        }
         Console.WriteLine($"{temp}  {count}");
     }
-    return count + 1;
+    return count;
 }
 
 void PrintGroupsNumbers(decimal range)
@@ -51,6 +54,7 @@ void PrintGroupsNumbers(decimal range)
     decimal countNumber = 1;
     int groups = 1;
     decimal start = 2;
+    int lineLength = 0;
     Console.WriteLine($"{groups++})  {countNumber++}");
     while (countNumber != range + 1)
     {
@@ -60,6 +64,12 @@ void PrintGroupsNumbers(decimal range)
         {
             Console.Write($"{countNumber} ");
             countNumber++;
+            lineLength++;
+            if (lineLength > 9)
+            {
+                Console.WriteLine();
+                lineLength = 0;
+            }
         }
         groups++;
         Console.WriteLine();
@@ -68,8 +78,19 @@ void PrintGroupsNumbers(decimal range)
 
 decimal N = 100000000000000000000M;
 Console.WriteLine(NumberOfGroups(N));
-Console.WriteLine(NumberOfGroups(50));
-PrintGroupsNumbers(50);
+Console.Write("Введите число N: ");
+string decimalValue = Console.ReadLine() ?? string.Empty;
+bool test = decimal.TryParse(decimalValue, out N);
+if (!test)
+{
+    Console.WriteLine($"Неверный ввод {decimalValue}");
+    Environment.Exit(1);
+}
+
+int groups = NumberOfGroups(N);
+Console.WriteLine($"Для числа {N} разбиение даёт M = {groups}");
+Console.ReadLine();
+PrintGroupsNumbers(N);
 
 
 
