@@ -1,6 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-Console.WriteLine("Введите число ");
-string test = Console.ReadLine();
-int number = int.Parse(test);
-Console.WriteLine("Вы ввели число " + number);
+﻿// 
+using static System.Console;
+using static NewMethod.MyMethod;
+
+//t number = InputInt("Введите число");
+double value = InputDouble("Введите число");
+double newValue = PowerNumber(value);
+WriteLine($"Квадрат числа {value} равен {newValue}");
+//Test(number, value);
