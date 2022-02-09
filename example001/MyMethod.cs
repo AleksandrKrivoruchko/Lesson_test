@@ -68,5 +68,12 @@ namespace NewMethod
         {
             return value * value;
         }
+
+        public static bool IsSquareNumber(double value1, double value2)
+        {
+            return value1 == value2 * value2 ? true : false;
+        }
+
+
     }
 }
