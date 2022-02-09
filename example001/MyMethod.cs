@@ -74,6 +74,18 @@ namespace NewMethod
             return value1 == value2 * value2 ? true : false;
         }
 
+        public static double MaxNumber(double value1, double value2)
+        {
+            if (value1 > value2) return value1;
+            else if (value2 > value1) return value2;
+            return 0;
+        }
 
+        public static double MinNumber(double value1, double value2)
+        {
+            if (value1 < value2) return value1;
+            else if (value2 < value1) return value2;
+            return 0;
+        }
     }
 }
