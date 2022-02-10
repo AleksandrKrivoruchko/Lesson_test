@@ -4,15 +4,16 @@ using static System.Console;
 
 namespace NewMethod
 {
-    internal class MyMethod
+    internal class MyMethod1
     {
         public static int InputInt(string msg)
         {
             Write(msg + " ");
             string answer = ReadLine() ?? string.Empty;
             bool flag = int.TryParse(answer, out int number);
+            answer = $"Ошибка ввода: {answer} - не является целым числом";
             if (flag) return number;
-            else ErrorExit(answer, true);
+            else ErrorExit(answer);
             return -1;
         }
 
@@ -25,8 +26,9 @@ namespace NewMethod
                 answer = CorrectRus(answer);
             }
             bool flag = double.TryParse(answer, out double number);
+            answer = $"Ошибка ввода: {answer} - не является числом";
             if (flag) return number;
-            else ErrorExit(answer, false);
+            else ErrorExit(answer);
             return -1;
         }
 
@@ -43,16 +45,9 @@ namespace NewMethod
             return result;
         }
 
-        private static void ErrorExit(string msg, bool flag)
+        public static void ErrorExit(string msg)
         {
-            if (flag)
-            {
-                WriteLine($"Ошибка ввода: {msg} - не является целым числом");
-            }
-            else
-            {
-                WriteLine($"Ошибка ввода: {msg} - не является числом");
-            }
+            WriteLine(msg);
             Environment.Exit(1);
         }
 
